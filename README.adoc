@@ -1,0 +1,37 @@
+= Задачка на JDBC
+
+== Задача
+
+. Реализовать интерфейс link:src/main/java/org/diligentsnail/jdbc/MovieRepository.java[`MovieRepository.java`]
+. Создать класс с `main`:
+.. Сохранить несколько фильмов.
+Метод -- `saveOne`
+.. Найти все фильмы и вывести их -- `findAll`
+.. Вывод от пользователя читать не нужно, пусть `main` выглядит так примерно:
++
+[source,java]
+----
+movieRepository.saveOne(new Movie(...));
+movieRepository.saveOne(new Movie(...));
+movieRepository.saveOne(new Movie(...));
+
+List<Movie> movies = movieRepository.findAll();
+// Вывод
+
+Optional<Movie> movie = movieRepository.findById(1);
+// Вывод
+----
+
+== Тестовый `Main`
+
+Посмотрите на тестовый класс link:src/main/java/org/diligentsnail/jdbc/Main.java[`Main`]
+
+== Что вспомнить и использовать
+
+. JDBC
+. Apache Derby
+. Семинар
+.. Запись
+.. Примеры
+... https://github.com/diligent-snail/jdbc-seminar/blob/main/playground.sql[`playground.sql`]
+... https://github.com/diligent-snail/jdbc-seminar/blob/main/src/test/java/org/diligentsnail/jdbc/JdbcTest.java[`JdbcTest`]
