@@ -1,5 +1,6 @@
 package org.diligentsnail.jdbc;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,33 +10,43 @@ public interface MovieRepository {
 	 *
 	 * @param id для поиска
 	 * @return {@link Optional} с найденным фильмом или пустой {@link Optional}, если фильма с {@code id} нет
+	 * @throws SQLException при ошибке доступа к БД
 	 */
-	Optional<Movie> findById(long id);
+	Optional<Movie> findById(long id) throws SQLException;
 
 	/**
 	 * Найти все фильмы
 	 *
 	 * @return список со всеми найденными фильмами
+	 * @throws SQLException при ошибке доступа к БД
 	 */
-	List<Movie> findAll();
+	List<Movie> findAll() throws SQLException;
 
 	/**
-	 * Сохранить фильм.
+	 * Сохранить или обновить фильм.
 	 * <p>
-	 * Метод устанавливает сгенерированный id вызовом {@link Movie#setId(Long)}.
-	 * <p>
-	 * Пример:
-	 * <pre>
-	 * 		Movie movie = new Movie();
-	 * 		movie.setTitle("Fight Club");
-	 * 		// movie.getId(); возвращает null, потому что ещё не сохранили
-	 * 		bookRepository.saveOne(movie);
-	 * 		// movie.getId(); возвращает не null, потому что метод saveOne установил id, который сгенерировала БД
-	 * </pre>
+	 * Если {@link Movie#getId()} возвращает {@code null}, то метод вставляет строку в таблицу и устанавливает
+	 * сгенерированный id вызовом {@link Movie#setId(Long)}.
+	 * Иначе метод обновляет существующую строку в таблице
 	 *
 	 * @param movie для сохранения
 	 * @throws IllegalArgumentException если {@code movie == null}
-	 * @throws IllegalArgumentException если {@code movie.getId() != null}
+	 * @throws SQLException при ошибке доступа к БД
 	 */
-	void saveOne(Movie movie);
+	void saveOne(Movie movie) throws SQLException;
+
+	/**
+	 * @return возвращает количество фильмов в репозитории
+	 * @throws SQLException при ошибке доступа к БД
+	 */
+	long count() throws SQLException;
+
+	/**
+	 * Найти фильмы, в названии которых есть подстрока {@code substring}
+	 *
+	 * @param substring для поиска
+	 * @return список фильмов, в названии которых есть {@code substring}
+	 * @throws SQLException при ошибке доступа к БД
+	 */
+	List<Movie> findByTitleContaining(String substring) throws SQLException;
 }
