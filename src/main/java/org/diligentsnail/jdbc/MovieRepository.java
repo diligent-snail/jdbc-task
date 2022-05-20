@@ -49,4 +49,12 @@ public interface MovieRepository {
 	 * @throws SQLException при ошибке доступа к БД
 	 */
 	List<Movie> findByTitleContaining(String substring) throws SQLException;
+
+	/**
+	 * Удалить фильм по {@code id}
+	 *
+	 * @param id по которому удалять
+	 * @throws SQLException при ошибке доступа к БД
+	 */
+	void deleteById(long id) throws SQLException;
 }
