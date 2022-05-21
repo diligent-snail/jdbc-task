@@ -12,6 +12,47 @@ import java.sql.Statement;
  * Если это не так, то откройте вкладку с Maven в Intellij IDEA и попробуйте обновить конфигурацию maven
  */
 public class Main {
+	// Вам слышно меня?
+	// Сегодня
+	// 28
+	// 4.6 --
+
+
+
+
+
+
+
+
+
+
+	// JDBC?
+	// DriverManager, Driver
+	// Connection, PreparedStatement, Statement, ResultSet
+
+	// Derby
+	//   1. Embedded
+	//   2. Network server
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public static void main(String[] args) throws SQLException {
 		try (Connection connection = DriverManager.getConnection("jdbc:derby:memory:sample;create=true");
 			 Statement statement = connection.createStatement();
