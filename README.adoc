@@ -1,6 +1,45 @@
-= Задачка на JDBC
+= Семинар по JDBC 2
 
-== Задача
+[NOTE]
+====
+Сперва я хотел дать мини-ДЗ на JDBC, но передумал, поэтому:
+
+. Ниже -- в «<<jdbc-task>>» -- описание задачи
+. У репозитория имя -- «jdbc-task»
+====
+
+== Что обсуждали
+
+. Разницу между https://db.apache.org/derby/papers/DerbyTut/embedded_intro.html[Embedded Derby] и https://db.apache.org/derby/papers/DerbyTut/ns_intro.html[Derby Network Server]
+. Как используют БД приложения типа Twitter
+. JDBC URL'ы derby
+. Немного DDD:
+.. Value Object
+.. Entity
+.. Repository
+
+== Что делали
+
+. Вместе писали link:src/main/java/org/diligentsnail/jdbc/MovieRepository.java[`MovieRepository.java`]
+.. Код с первой пары -- в ветке https://github.com/diligent-snail/jdbc-task/tree/first[first]
+.. Со второй -- https://github.com/diligent-snail/jdbc-task/tree/second[second]
+
+== Ссылки
+
+. https://enterprisecraftsmanship.com/posts/entity-vs-value-object-the-ultimate-list-of-differences/[Entity vs Value Object: the ultimate list of differences] -- разница между Entity и Value Object
+. https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215[
+Domain-Driven Design: Tackling Complexity in the Heart of Software] -- книга о DDD
+.. https://www.infoq.com/minibooks/domain-driven-design-quickly/[Domain Driven Design Quickly] -- сокращённая версия
+. https://db.apache.org/derby/docs/10.9/devguide/tdevdvlp40464.html[Shutting down Derby or an individual database] -- о выключении Derby
+. Миграции:
+.. https://en.wikipedia.org/wiki/Schema_migration[Schema migration]
+.. https://flywaydb.org/[Flyway]
+.. https://www.liquibase.org/[Liquibase]
+
+[#jdbc-task]
+== Задачка на JDBC
+
+=== Задача
 
 . Реализовать интерфейс link:src/main/java/org/diligentsnail/jdbc/MovieRepository.java[`MovieRepository.java`]
 . Создать класс с `main`:
@@ -22,11 +61,11 @@ Optional<Movie> movie = movieRepository.findById(1);
 // Вывод
 ----
 
-== Тестовый `Main`
+=== Тестовый `Main`
 
 Посмотрите на тестовый класс link:src/main/java/org/diligentsnail/jdbc/Main.java[`Main`]
 
-== Что вспомнить и использовать
+=== Что вспомнить и использовать
 
 . JDBC
 . Apache Derby
